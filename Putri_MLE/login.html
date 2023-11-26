@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validated Login Form</title>
+    <link rel="stylesheet" href="stylelogin.css">
+</head>
+<body>
+    
+    <section class="container">
+        <h1 class="label"><img src="Logo Polinema (Politeknik Negeri Malang).png">Polinema Login</h1>
+        <form class="login_form" method="post" action="" onsubmit="return validation();">
+            <div class="font">Email or Phone</div>
+            <input type="text" id="email">
+            <div id="email_error">Please fill up your Email or Phone</div>
+            <div class="font font2">Password</div>
+            <input type="password" id="pass">
+            <div id="pass_error">Please fill up your Password</div>
+            <button type="submit">Login</button>
+            <p> faraldyna@gmail.com // 10042003 </p>
+            <p> klik ok after alert appear! </p>
+        </form>
+    </section>
+    
+    <script type="text/javascript">
+        var login_attempts=3;
+        function validation(){
+         var email=document.getElementById("email").value;
+         var pass=document.getElementById("pass").value;
+            if(email=="faraldyna@gmail.com" && pass=="10042003"){
+            window.location.assign("home.html");
+            alert("Successfully Logged In");
+            document.getElementById("email").value="";
+            document.getElementById("pass").value="";
+            }else {
+                if(login_attempts==0){
+                alert("No Login Attempts Available");
+                }else {
+                login_attempts=login_attempts-1;
+                alert("Login Failed Now Only "+login_attempts+" Login Attempts Available");
+                    if(login_attempts==0){
+                    document.getElementById("email").disabled=true;
+                    document.getElementById("pass").disabled=true;
+                    document.getElementsByClassName("login_form").disabled=true;
+                    }
+                }
+            }
+         return false;
+        }	
+        </script>
+</body>
+</html>
